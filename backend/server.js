@@ -8,9 +8,10 @@ import messageRoutes from "./routes/message.routes.js"; // file imports
 import userRoutes from "./routes/user.routes.js"; // file imports
 
 import connectToMangoDB from "./db/connectToMangoDB.js"; // db imports
+import { app, server } from "./socket/socket.js";
 // const dotenv = require("dotenv"); // we cannot user ${port} directly so we require dotenv and then config
 
-const app = express(); // variables
+// const app = express(); // variables
 const PORT = process.env.PORT || 5000; // we will get it from process.env or from port 5000
 
 dotenv.config(); //.envConfig
@@ -39,7 +40,7 @@ app.use("/api/users", userRoutes);
 //     console.log("logout route");
 // }); this will become and complex if we keep on giving routes like this instead we can do this
 
-app.listen(PORT, () => {
+server.listen(PORT, () => {
     connectToMangoDB();
     console.log(` server running on port  ${PORT}`);
 }); //  we don't want this to be hard coded value so we do SEE LINE 3
