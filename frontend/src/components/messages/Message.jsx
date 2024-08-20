@@ -1,7 +1,8 @@
 import React from 'react'
 import { useAuthContext } from '../../context/AuthContext';
-import useConversation from '../../zustand/useConversation';
 import { extractTime } from '../../utils/extractTime';
+import useConversation from '../../zustand/useConversation';
+
 
 const Message = ({message}) => {
   const {authUser} = useAuthContext();
@@ -13,6 +14,7 @@ const Message = ({message}) => {
   const bubbleBgColor = fromMe ? 'bg-blue-500' : "";
 
   const shakeClass = message.shouldShake ? "shake" : "";
+
   return (
     <div className={`chat ${chatClassName}`}>
         <div className='chat-image avatar'>
@@ -27,7 +29,7 @@ const Message = ({message}) => {
 
 
     </div>
-  )
-}
+  );
+};
 
 export default Message;
